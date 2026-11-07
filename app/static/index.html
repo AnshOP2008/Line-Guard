@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>LineGuard — Know what changed.</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <a href="#" class="brand"
+        ><span class="brand-mark">L<span>↗</span></span
+        ><span>LineGuard</span></a
+      >
+      <div class="workspace-label">OPERATIONS WORKSPACE</div>
+      <nav aria-label="Main navigation">
+        <button class="nav active" data-view="fleet" aria-label="Fleet overview">
+          <span>⊞</span> Fleet overview</button
+        ><button class="nav" data-view="forecast"><span>↗</span> Failure forecast lab</button
+        ><button class="nav" data-view="impact"><span>%</span> Business impact</button
+        ><button class="nav" data-view="monitor"><span>◈</span> Command center</button
+        ><button class="nav" data-view="evidence"><span>▥</span> Model evidence</button
+        ><button class="nav" data-view="feedback">
+          <span>☷</span> Operator feedback <b id="feedback-count">0</b>
+        </button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="system-dot"></div>
+        Local inference engine<small>Eight signals. One connected picture.</small>
+        
+      </div>
+    </aside>
+    <main>
+      <div class="content">
+        <section id="fleet" class="view active">
+          <div class="hero">
+            <div>
+              <div class="eyebrow">MAINTENANCE OPERATIONS</div>
+              <h1>Fleet overview</h1>
+              <p class="muted">
+                Review equipment evidence and turn findings into inspection tasks.
+              </p>
+            </div>
+          </div>
+          <div class="panel fleet-panel">
+            <h2>Guided walkthrough</h2>
+            <div class="fleet-actions">
+              <button class="primary" id="guide-engine">Engine approaching inspection</button>
+              <button id="guide-pump">Pump relationship anomaly</button>
+              <button id="guide-sensor">Injected sensor flatline</button>
+              <button id="reset-demo">Reset replay</button>
+            </div>
+            <p id="guide-message" role="status" class="muted">
+              Each walkthrough opens an illustrative observation. Your saved tasks remain available.
+            </p>
+          </div>
+          <div class="panel fleet-panel">
+            <strong id="fleet-counts">Loading fleet summary…</strong>
+            <p id="fleet-clock" class="muted"></p>
+          </div>
+          <div class="fleet-grid">
+            <article class="panel fleet-panel">
+              <div class="eyebrow">SKAB · RECORDED REPLAY</div>
+              <h2>Pump P–01</h2>
+              <p id="fleet-pump">Loading latest replay observation…</p>
+              <button data-open-profile="monitor">View pump evidence</button>
+            </article>
+            <article class="panel fleet-panel">
+              <div class="eyebrow">NASA FD001 · SIMULATED BENCHMARK</div>
+              <h2>Turbofan</h2>
+              <p id="fleet-engine">Loading simulated engine forecast…</p>
+              <button data-open-profile="forecast">View engine evidence</button>
+            </article>
+          </div>
+          <article class="panel fleet-panel">
+            <div class="eyebrow">FLEET PLANNING</div>
+            <h2>Inspection capacity</h2>
+            <label for="inspection-capacity">Engine inspection slots</label>
+            <input type="number" id="inspection-capacity" min="1" max="20" value="3" />
+            <p class="muted">
+              Compatible benchmark engines within the forecast horizon, ranked by shortest predicted
+              remaining life.
+            </p>
+            <ol id="inspection-plan"></ol>
+          </article>
+          <article class="panel fleet-panel">
+            <div class="eyebrow">LOCAL WORK ORDERS</div>
+            <h2>Maintenance tasks</h2>
+            <div class="fleet-actions">
+              <label
+                >Search tasks
+                <input id="task-search" type="search" placeholder="Asset or notes" /></label
+              ><label
+                >Status
+                <select id="task-filter">
+                  <option value="">All tasks</option>
+                  <option>open</option>
+                  <option>acknowledged</option>
+                  <option>completed</option>
+                  <option>cancelled</option>
+                </select></label
+              >
+            </div>
+            <div id="task-list" aria-live="polite">Loading local tasks…</div>
+          </article>
+        </section>
+        <dialog id="task-dialog" aria-labelledby="task-title">
+          <form id="task-form">
+            <h2 id="task-title">Save an inspection task</h2>
+            <p id="task-assessment"></p>
+            <label for="task-notes">Operator notes</label>
+            <textarea id="task-notes" rows="3" maxlength="2000"></textarea>
+            <p id="task-error" role="alert"></p>
+            <div class="fleet-actions">
+              <button type="button" id="task-cancel">Cancel</button
+              ><button class="primary" type="submit">Save task</button>
+            </div>
+          </form>
+        </dialog>
+        <section id="impact" class="view">
+          <div class="page-title">
+            <div>
+              <div class="eyebrow">BUSINESS IMPACT / SIMULATED MAINTENANCE POLICIES</div>
+              <h1>Fewer failures. Less wasted life.</h1>
+              <p>
+                Replay 40 held-out engines under three maintenance policies and price the outcome.
+              </p>
+            </div>
+            <span class="tag">HELD-OUT EVALUATION ENGINES</span>
+          </div>
+          <div class="stats-grid" id="impact-kpis">
+            <article class="stat accent">
+              <div>COST VS BEST FIXED SCHEDULE <span>↘</span></div>
+              <strong id="kpi-savings">—</strong
+              ><small id="kpi-savings-note">Per 1,000 operating cycles</small>
+            </article>
+            <article class="stat">
+              <div>FAILURES · EVALUATION ENGINES <span>!</span></div>
+              <strong id="kpi-failures">—</strong
+              ><small id="kpi-failures-note">LineGuard vs fixed vs run-to-failure</small>
+            </article>
+            <article class="stat">
+              <div>LIFE UTILISATION <span>◎</span></div>
+              <strong id="kpi-util">—</strong
+              ><small id="kpi-util-note">Share of engine life used before replacement</small>
+            </article>
+            <article class="stat">
+              <div>UNUSED CYCLES / REPLACEMENT <span>⌁</span></div>
+              <strong id="kpi-waste">—</strong
+              ><small id="kpi-waste-note">Mean cycles of life thrown away</small>
+            </article>
+          </div>
+          <div class="impact-grid">
+            <article class="panel fleet-panel impact-controls">
+              <div class="eyebrow">PLANT ASSUMPTIONS</div>
+              <h2>Price your own plant</h2>
+              <label for="impact-ratio"
+                >Cost of failure : planned maintenance
+                <strong id="impact-ratio-label">10 : 1</strong></label
+              >
+              <input id="impact-ratio" type="range" min="2" max="50" step="1" value="10" />
+              <label for="impact-lead"
+                >Planning lead time <strong id="impact-lead-label">0 cycles</strong></label
+              >
+              <input id="impact-lead" type="range" min="0" max="30" step="1" value="0" />
+              <label class="impact-toggle"
+                ><input type="checkbox" id="impact-lower" /> Use 90% interval lower bound
+                (conservative)</label
+              >
+              <p class="muted fine" id="impact-tuned"></p>
+            </article>
+            <article class="panel fleet-panel impact-cost">
+              <div class="eyebrow">COST PER 1,000 OPERATING CYCLES</div>
+              <h2>Three policies, one bill</h2>
+              <div id="impact-bars" class="impact-bars" aria-live="polite"></div>
+              <p class="impact-avoided" id="impact-avoided"></p>
+            </article>
+          </div>
+          <article class="panel fleet-panel" id="impact-timeline-panel">
+            <div class="eyebrow">ENGINE-BY-ENGINE REPLAY</div>
+            <h2>When each policy acts</h2>
+            <div class="impact-legend">
+              <span><i class="lg-life"></i> Engine life until failure</span
+              ><span><i class="lg-pred"></i> LineGuard acts</span
+              ><span><i class="lg-fixed"></i> Fixed schedule acts</span
+              ><span><i class="lg-fail">✕</i> Failed before maintenance</span>
+            </div>
+            <div
+              id="impact-timeline"
+              class="impact-timeline"
+              role="img"
+              aria-label="Per-engine timeline of failure cycle and the cycle at which each maintenance policy acts"
+            ></div>
+            <p class="muted fine">
+              One row per held-out evaluation engine, sorted by failure cycle. Hover a row for exact
+              cycles. Maintenance after the failure cycle is impossible: the event is a failure.
+            </p>
+          </article>
+          <article class="panel fleet-panel impact-assumptions">
+            <p class="muted fine">
+              <strong>Costs are relative units.</strong> One planned job costs 1; one unplanned
+              failure costs the ratio above. Simulated NASA data, so real-fleet savings will differ.
+            </p>
+            <details>
+              <summary>How this was simulated</summary>
+              <blockquote id="impact-protocol" class="impact-quote">Loading protocol…</blockquote>
+            </details>
+          </article>
+        </section>
+        <section id="monitor" class="view">
+          <div class="page-title">
+            <div>
+              <div class="eyebrow">SEE THE RELATIONSHIPS. FIND THE BREAK.</div>
+              <h1>Know what changed.</h1>
+              <p>Eight sensor streams. Explainable anomalies. A clearer next action.</p>
+            </div>
+            <div class="page-actions">
+              <a class="button ghost" href="/api/sample">↓ Sample CSV</a
+              ><label class="button primary" for="csv-file">↑ &nbsp; Import sensor stream</label
+              ><input type="file" id="csv-file" accept=".csv,text/csv" hidden />
+            </div>
+          </div>
+          <div class="stats-grid">
+            <article class="stat">
+              <div>HELD-OUT EVENT RECALL <span>◎</span></div>
+              <strong id="event-recall">—</strong
+              ><small id="event-caption">Untouched chronological test runs</small>
+              <div class="stat-foot">DETECTED ANOMALY EVENTS</div>
+            </article>
+            <article class="stat">
+              <div>MEDIAN DETECTION DELAY <span>↗</span></div>
+              <strong id="delay-stat">—</strong><small>After labelled anomaly onset</small>
+              <div class="stat-foot">DETECTED EVENTS ONLY</div>
+            </article>
+            <article class="stat accent">
+              <div>TEST NORMAL ALERT RATE <span>!</span></div>
+              <strong id="fpr-stat">—</strong><small>Calibration target: 1% of normal points</small>
+              <div class="stat-foot">DISTRIBUTION SHIFT REQUIRES REVIEW</div>
+            </article>
+          </div>
+          <div class="stream-toolbar">
+            <div>
+              <span class="eyebrow">PUMP STATION / P–01</span
+              ><select id="scenario-select" aria-label="Replay scenario">
+                <option value="uploaded" disabled hidden>Uploaded sensor stream</option>
+                <option value="recorded" selected>Recorded pump anomaly</option>
+                <option value="normal">Recorded normal samples</option>
+                <option value="coherent">Simulated flow / load shift</option>
+                <option value="flatline">Injected current flatline</option>
+                <option value="spike">Injected current spikes</option>
+                <option value="drift">Injected current drift</option></select
+              ><select
+                id="run-select"
+                aria-label="Held-out recorded run"
+                title="Inspect every held-out experiment"
+              ></select>
+            </div>
+            <div class="replay-controls">
+              <span id="source-tag" class="tag">RECORDED DATA</span
+              ><button class="button ghost" id="restart-btn" aria-label="Restart replay">↺</button
+              ><button class="button primary" id="play-btn">▷ Play replay</button>
+            </div>
+          </div>
+          <p class="source-description" id="source-description"></p>
+          <label class="truth-control"
+            ><input type="checkbox" class="truth-toggle" /> Show retrospective anomaly labels /
+            injection interval</label
+          >
+          <div class="monitor-grid">
+            <article class="panel timeline-panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="eyebrow">RELATIONSHIP HEALTH</span>
+                  <h2>Anomaly timeline</h2>
+                </div>
+                <div class="chart-legend">
+                  <span><i class="legend-dot"></i> Residual score</span
+                  ><span><i class="legend-dot amber-dot"></i> Action threshold</span>
+                </div>
+              </div>
+              <div class="score-strip">
+                <strong id="current-score">—</strong><span>× calibrated threshold</span
+                ><span id="current-state" class="pill">—</span
+                ><span class="sample-clock" id="sample-clock"></span>
+              </div>
+              <svg
+                id="timeline"
+                viewBox="0 0 840 225"
+                role="img"
+                aria-label="Anomaly score timeline with threshold and recorded labels"
+              ></svg>
+              <div class="scrubber-row">
+                <span>START</span
+                ><input
+                  type="range"
+                  id="scrubber"
+                  min="0"
+                  max="100"
+                  value="0"
+                  aria-label="Replay sample"
+                /><span id="sample-index">0</span>
+              </div>
+              <div class="timeline-foot">
+                <span id="timeline-caption">Shaded amber: dataset anomaly label</span
+                ><span>Replay clock · not a live machine</span>
+              </div>
+            </article>
+            <article class="panel diagnosis-panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="eyebrow">INVESTIGATE, THEN ACT</span>
+                  <h2>Decision brief</h2>
+                </div>
+                <span class="signal-icon">⌁</span>
+              </div>
+              <div id="decision-brief"></div>
+              <button class="button primary full" id="feedback-btn">
+                ＋ Record operator decision
+              </button>
+              <p class="muted fine">
+                Heuristic triage, not a validated root-cause diagnosis. Human review required.
+              </p>
+            </article>
+          </div>
+          <div class="signals-grid" id="signal-cards"></div>
+          <div class="bottom-grid">
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="eyebrow">WHICH RELATIONSHIPS BROKE?</span>
+                  <h2>Cross-sensor evidence</h2>
+                </div>
+                <span class="tag">MODEL RESIDUALS</span>
+              </div>
+              <div id="relationship-evidence"></div>
+              <p class="muted fine">
+                Each sensor is predicted from the other seven. Residuals compare observed readings
+                with model expectations, normalized using training data. Importance is associative,
+                not causal.
+              </p>
+            </article>
+          </div>
+        </section>
+        <section id="forecast" class="view">
+          <div class="page-title">
+            <div>
+              <div class="eyebrow">FAILURE PROGNOSTICS / INDEPENDENT ENGINE PROFILE</div>
+              <h1>A forecast. Before failure.</h1>
+              <p>Estimate remaining engine life from the degradation already observed.</p>
+            </div>
+            <div class="page-actions">
+              <a class="button ghost" href="/api/prognostics/sample">↓ Engine sample CSV</a
+              ><label class="button primary" for="engine-file">↑ Import engine telemetry</label
+              ><input type="file" id="engine-file" accept=".csv,text/csv" hidden />
+            </div>
+          </div>
+          <div class="stats-grid forecast-stats">
+            <article class="stat">
+              <div>OFFICIAL TEST MAE <span>◎</span></div>
+              <strong id="forecast-mae">—</strong><small>Cycles · 100 unseen test engines</small>
+            </article>
+            <article class="stat">
+              <div>OFFICIAL TEST RMSE <span>⌁</span></div>
+              <strong id="forecast-rmse">—</strong><small>Uncapped supplied RUL ground truth</small>
+            </article>
+            <article class="stat">
+              <div>AGE-ONLY BASELINE MAE <span>↗</span></div>
+              <strong id="baseline-mae">—</strong
+              ><small>Training-only median lifetime minus age</small>
+            </article>
+            <article class="stat">
+              <div>NASA PHM SCORE <span>⌁</span></div>
+              <strong id="forecast-nasa">—</strong
+              ><small id="forecast-nasa-note">Lower is better · asymmetric late penalty</small>
+            </article>
+            <article class="stat accent">
+              <div>MAE REDUCTION VS BASELINE <span>↗</span></div>
+              <strong id="forecast-gain">—</strong><small>Same official test endpoints</small>
+            </article>
+          </div>
+          <div class="stream-toolbar">
+            <div>
+              <span class="eyebrow">TURBOFAN / RESEARCH BENCHMARK</span
+              ><select id="engine-select" aria-label="Select official test engine"></select>
+            </div>
+            <span class="tag" id="engine-source">SIMULATED BENCHMARK DATA</span>
+          </div>
+          <div class="forecast-grid">
+            <article class="panel forecast-hero">
+              <div class="panel-heading">
+                <div>
+                  <span class="eyebrow">REMAINING USEFUL LIFE</span>
+                  <h2 id="engine-title">Engine 001</h2>
+                </div>
+                <span class="signal-icon">↗</span>
+              </div>
+              <div class="rul-number" id="engine-rul">—</div>
+              <span class="rul-unit">PREDICTED OPERATIONAL CYCLES LEFT</span>
+              <div class="rul-interval" id="engine-interval"></div>
+              <div id="engine-decision" class="forecast-decision"></div>
+              <div class="truth-row">
+                <span>Last observed cycle</span><strong id="engine-age">—</strong>
+              </div>
+              <div class="truth-row">
+                <span>Supplied benchmark RUL</span><strong id="engine-truth">—</strong>
+              </div>
+              <p class="muted fine">
+                A statistical estimate, not a guarantee or a certified maintenance interval.
+                Training targets cap at 125 cycles; values above that range can be underestimated.
+                <span id="interval-note"
+                  >90% conformal interval, calibrated on out-of-fold engines.</span
+                >
+              </p>
+            </article>
+            <article class="panel forecast-history">
+              <div class="panel-heading">
+                <div>
+                  <span class="eyebrow">CAUSAL HISTORY / NO FUTURE INPUTS</span>
+                  <h2>The degradation trajectory</h2>
+                </div>
+                <div class="chart-legend">
+                  <span><i class="legend-dot"></i> Predicted RUL</span
+                  ><span><i class="legend-dot band-dot"></i> 90% interval</span
+                  ><span><i class="legend-dot amber-dot"></i> Benchmark truth</span>
+                </div>
+              </div>
+              <div class="replay-bar">
+                <button id="engine-restart">Restart</button
+                ><button id="engine-play">Play engine replay</button><span id="engine-clock"></span
+                ><input
+                  id="engine-scrubber"
+                  type="range"
+                  min="0"
+                  max="1"
+                  value="0"
+                  aria-label="Engine observed cycle"
+                /><label
+                  ><input type="checkbox" class="truth-toggle" /> Show benchmark hindsight</label
+                >
+              </div>
+              <svg
+                id="rul-chart"
+                viewBox="0 0 800 275"
+                role="img"
+                aria-label="Predicted remaining life over observed cycles compared with benchmark hindsight"
+              ></svg>
+              <p class="muted fine" id="rul-history-note">
+                Amber truth is retrospective: supplied final RUL plus cycles back from the final
+                observation. It is never an inference input. Predictions use current and past
+                observations only.
+              </p>
+            </article>
+          </div>
+          <article class="panel explain-panel" id="explain-panel" hidden>
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">EXPLAINABLE FORECAST / COUNTERFACTUAL SENSITIVITY</span>
+                <h2>Why this forecast?</h2>
+              </div>
+              <div class="chart-legend">
+                <span><i class="legend-dot amber-dot"></i> Shortens life</span
+                ><span><i class="legend-dot"></i> Extends life</span>
+              </div>
+            </div>
+            <div class="explain-body">
+              <div class="explain-summary">
+                <p id="explain-summary" class="explain-headline">Loading sensor contributions…</p>
+                <p id="explain-caveat" class="muted fine"></p>
+              </div>
+              <div id="explain-chart" class="explain-chart" aria-live="polite"></div>
+            </div>
+          </article>
+          <div class="bottom-grid">
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="eyebrow">MAINTENANCE PLANNING ASSUMPTION</span>
+                  <h2>How soon would you inspect?</h2>
+                </div>
+                <span class="tag">EDITABLE HORIZON</span>
+              </div>
+              <label class="capacity-label"
+                >Flag engines predicted within <strong id="horizon-label">30 cycles</strong
+                ><input id="rul-horizon" type="range" min="5" max="125" value="30"
+              /></label>
+              <div class="horizon-metrics" id="horizon-metrics"></div>
+              <div class="forecast-confusion" id="forecast-confusion"></div>
+              <p class="muted fine">
+                Measured once per official test engine at its final observed cycle. Positive means
+                actual remaining life ≤ selected horizon; alert means predicted remaining life ≤
+                horizon. Changing the horizon explores the fixed test results, without retraining or
+                tuning the model.
+              </p>
+            </article>
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="eyebrow">MODEL SELECTION CONTRACT</span>
+                  <h2>Unseen engines. Real evaluation.</h2>
+                </div>
+                <span class="tag">GROUP-SEPARATED</span>
+              </div>
+              <div id="forecast-validation"></div>
+              <p class="muted fine">
+                5-fold engine-grouped cross-validation on the 100 official training engines, 5
+                random truncation points per held-out engine (500 evaluations). Lowest CV MAE wins,
+                then refit on all 100 and evaluated once on the official 100-engine test set. Engine
+                identifiers are local to each file, not shared physical engines.
+              </p>
+              <a
+                href="https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/"
+                target="_blank"
+                rel="noopener"
+                >Official NASA provenance ↗</a
+              >
+            </article>
+          </div>
+          <article class="panel forecast-fleet">
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">OFFICIAL FD001 TEST FLEET</span>
+                <h2>100 engines. One endpoint each.</h2>
+              </div>
+              <span class="tag">CLICK AN ENGINE TO INVESTIGATE</span>
+            </div>
+            <label class="truth-control"
+              >Find engine <input id="engine-search" type="search" placeholder="Engine number"
+            /></label>
+            <div class="table-wrap forecast-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ENGINE</th>
+                    <th>OBSERVED CYCLES</th>
+                    <th>PREDICTED RUL</th>
+                    <th>BENCHMARK RUL</th>
+                    <th>ABSOLUTE ERROR</th>
+                    <th>HORIZON DECISION</th>
+                  </tr>
+                </thead>
+                <tbody id="engine-fleet"></tbody>
+              </table>
+            </div>
+            <p class="muted fine">
+              Benchmark RUL is disclosed for evaluation, not available to the model. Uploaded
+              telemetry is separate and has no assumed ground truth. FD001 represents one simulated
+              operating condition and one high-pressure-compressor degradation mode.
+            </p>
+          </article>
+        </section>
+        <section id="evidence" class="view">
+          <div class="page-title">
+            <div>
+              <div class="eyebrow">TRUST THROUGH TRANSPARENCY</div>
+              <h1>Evidence, not promises.</h1>
+              <p>Normal-only models. Entire-run holdouts. The limits in plain sight.</p>
+            </div>
+            <a
+              class="button ghost"
+              href="https://github.com/waico/SKAB"
+              target="_blank"
+              rel="noopener"
+              >Official SKAB source ↗</a
+            >
+          </div>
+          <div class="evidence-banner">
+            <strong>The hard result: distribution shift is real.</strong> A 1% empirical calibration
+            alert rate does not guarantee 1% on a new run, or a fixed number of alarms per shift.
+            These are pump anomalies, not labelled equipment failures. We do not claim measured
+            pre-failure warning.
+          </div>
+          <div class="evidence-grid">
+            <article class="panel wide">
+              <div class="panel-heading">
+                <h2>Three models. The same test runs.</h2>
+                <span class="tag">NO TEST-SET SELECTION</span>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>MODEL</th>
+                      <th>EVENT RECALL</th>
+                      <th>EVENT PRECISION</th>
+                      <th>POINT RECALL</th>
+                      <th>POINT PRECISION</th>
+                      <th>NORMAL FPR</th>
+                      <th>DELAY</th>
+                    </tr>
+                  </thead>
+                  <tbody id="model-table"></tbody>
+                </table>
+              </div>
+              <p class="muted fine">
+                Cross-sensor residual is the predeclared primary model; results are descriptive. A
+                test event is detected if any alert overlaps it. Alarm events are contiguous alert
+                segments. No point-adjusted scoring; fragmented alerts lower event precision. Delay
+                is measured from labelled onset and includes detected events only.
+              </p>
+            </article>
+            <article class="panel">
+              <div class="panel-heading">
+                <h2>The data contract</h2>
+                <span class="tag">CHRONOLOGICAL</span>
+              </div>
+              <div id="split-info"></div>
+              <p class="muted" id="split-contract"></p>
+              <ul class="contract">
+                <li>Only eight sensor values enter model fitting.</li>
+                <li>Timestamp and anomaly/changepoint labels are excluded.</li>
+                <li>Preprocessing and residual scales fitted on train only.</li>
+                <li>Threshold: 99th percentile of independent normal calibration scores.</li>
+                <li>Same physical rig; generalization to another site is unproven.</li>
+              </ul>
+            </article>
+            <article class="panel">
+              <div class="panel-heading">
+                <h2>Sensor-fault stress tests</h2>
+                <span class="tag">SYNTHETIC INJECTIONS</span>
+              </div>
+              <div id="injection-results"></div>
+              <p class="muted fine">
+                Current spikes, drift and flatlines injected into held-out normal samples. The
+                heuristic flags exact flatlines and unusually large jumps. It may miss gradual drift
+                and confuse process changes with sensor issues.
+              </p>
+            </article>
+            <article class="panel wide">
+              <div class="panel-heading">
+                <h2>If a signal disappears</h2>
+                <span class="tag">SENSOR ABLATION</span>
+              </div>
+              <div id="ablation-results" class="ablation-grid"></div>
+              <p class="muted fine">
+                Each sensor is replaced by its training mean, with no model refit. This measures
+                sensitivity to missing information; it is not a recommendation to impute silently in
+                production.
+              </p>
+            </article>
+          </div>
+          <article class="panel fleet-panel" id="generalisation">
+            <div class="eyebrow">GENERALISATION / NASA C-MAPSS</div>
+            <h2>Generalisation: all four NASA C-MAPSS subsets</h2>
+            <p class="muted" id="gen-protocol">Loading benchmark…</p>
+            <div class="operations-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Subset</th>
+                    <th>Conditions</th>
+                    <th>Fault modes</th>
+                    <th>Test engines</th>
+                    <th>MAE</th>
+                    <th>RMSE</th>
+                    <th>RMSE · capped truth</th>
+                    <th>NASA score</th>
+                  </tr>
+                </thead>
+                <tbody id="gen-table"></tbody>
+              </table>
+            </div>
+            <h3>Regime normalisation ablation</h3>
+            <div class="gen-ablation" id="gen-ablation"></div>
+            <h3>Literature context · RMSE</h3>
+            <div class="operations-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>FD001</th>
+                    <th>FD002</th>
+                    <th>FD003</th>
+                    <th>FD004</th>
+                  </tr>
+                </thead>
+                <tbody id="gen-lit"></tbody>
+              </table>
+            </div>
+            <p class="muted fine" id="gen-lit-note"></p>
+          </article>
+        </section>
+        <section id="feedback" class="view">
+          <div class="page-title">
+            <div>
+              <div class="eyebrow">CLOSE THE HUMAN LOOP</div>
+              <h1>Decisions become evidence.</h1>
+              <p>Operator feedback stays in a local SQLite database. No automatic retraining.</p>
+            </div>
+            <span class="tag">SAVED ON THIS COMPUTER</span>
+          </div>
+          <div id="feedback-list"></div>
+        </section>
+      </div>
+    </main>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <dialog id="feedback-dialog">
+      <form id="feedback-form">
+        <div class="panel-heading">
+          <h2>Record operator decision</h2>
+          <button class="icon-btn" type="button" id="close-dialog" aria-label="Close">×</button>
+        </div>
+        <p id="feedback-context"></p>
+        <label
+          >Assessment<select id="feedback-verdict">
+            <option>Needs investigation</option>
+            <option>Real fault</option>
+            <option>False alarm</option>
+            <option>Sensor issue</option>
+          </select></label
+        ><label
+          >Inspection notes<textarea
+            id="feedback-note"
+            rows="4"
+            maxlength="1000"
+            placeholder="What did you observe? What should happen next?"
+          ></textarea>
+        </label>
+        <p class="muted fine">
+          A human assessment, not new ground truth. Stored locally; no external notification.
+        </p>
+        <button class="button primary full" type="submit">Save operator decision</button>
+      </form>
+    </dialog>
+    <script src="/static/app.js"></script>
+    <script src="/static/operations.js"></script>
+    <script src="/static/insights.js"></script><script src="/static/help.js"></script>
+  </body>
+</html>
+
+

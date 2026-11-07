@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+.pytest_cache/
+data/feedback.sqlite3*
+data/SKAB/.git/
+*.log
+_snapshot.tgz
+_to_delete/
+knowbefore.md
+
+# Personal preparation notes (not part of the submission)
+docs/DEMO_SCRIPT.md
+docs/PITCH.md
+docs/PROGRESS.md
+docs/PROPOSAL_SCOPE.md
+docs/IMPROVEMENT_REVIEW.md
+docs/IMPROVEMENTS_IMPLEMENTED.md
+data/cmapss.zip

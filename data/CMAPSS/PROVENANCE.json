@@ -1,0 +1,36 @@
+{
+  "official_nasa_page": "https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/",
+  "section": "6. Turbofan Engine Degradation Simulation",
+  "nasa_linked_archive_url": "https://phm-datasets.s3.amazonaws.com/NASA/6.+Turbofan+Engine+Degradation+Simulation+Data+Set.zip",
+  "archive_sha256": "c9c5dec12a945a82e8bb4446589d7fb3cc057b5e5d81fa1a12e25ee9912ad3b2",
+  "nested_archive": "CMAPSSData.zip",
+  "retained_extracted_files": [
+    "train_FD001.txt",
+    "test_FD001.txt",
+    "RUL_FD001.txt",
+    "readme.txt",
+    "Damage Propagation Modeling.pdf",
+    "FD002/train_FD002.txt",
+    "FD002/test_FD002.txt",
+    "FD002/RUL_FD002.txt",
+    "FD003/train_FD003.txt",
+    "FD003/test_FD003.txt",
+    "FD003/RUL_FD003.txt",
+    "FD004/train_FD004.txt",
+    "FD004/test_FD004.txt",
+    "FD004/RUL_FD004.txt"
+  ],
+  "download_date": "2026-11-03",
+  "note": "NASA directly links this PHM-hosted archive. Hash computed locally for integrity, not an independent NASA-published signature. Simulated data; no CC0 license inferred. FD002-FD004 extracted 3 Nov 2026 from the same archive for the generalisation benchmark (app/benchmark.py).",
+  "subset_file_sha256": {
+    "FD002/RUL_FD002.txt": "c851dd96a6ea6998d3c4a8f834d3c8013aa90e93a6ed950dc826ad0655b2906b",
+    "FD002/test_FD002.txt": "de7b5bf7e998a985c378488480528b7c02cff1406a46740def362dda8d9b4e02",
+    "FD002/train_FD002.txt": "dac6c4dbc4e7c1bdeb5747da3d313d05c395bb99801b44a002b26a2ba13d788f",
+    "FD003/RUL_FD003.txt": "df1e0566306b174a2de41c67a3e7a51877889598b78643fc3e5685259091b7cb",
+    "FD003/test_FD003.txt": "299babd63c8d987cef079c4a425429f33b3a34797d803bbe2ad48c29dbd0d790",
+    "FD003/train_FD003.txt": "2abbe9968cc5e8eb091980f51b20f62bb4127336d3482cb52071d53bf23329e2",
+    "FD004/RUL_FD004.txt": "196b836b85a95ac7fdbbf29c5fdf1657382eafa445644d114ffaaf50dc2975e1",
+    "FD004/test_FD004.txt": "1dc675fff0624bac10786927c6715b37d1297657137400d2b1a3138d777a3ba5",
+    "FD004/train_FD004.txt": "27ef6160b6a1dcb2613a88de9c239f763b223f02cdc41dc5cdedc5dc189b6218"
+  }
+}

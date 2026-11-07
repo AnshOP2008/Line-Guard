@@ -1,0 +1,418 @@
+{
+  "engine_training_ranges": {
+    "sensor_2": [
+      641.21,
+      644.53
+    ],
+    "sensor_3": [
+      1571.04,
+      1616.91
+    ],
+    "sensor_4": [
+      1382.25,
+      1441.49
+    ],
+    "sensor_7": [
+      549.85,
+      556.06
+    ],
+    "sensor_8": [
+      2387.9,
+      2388.56
+    ],
+    "sensor_9": [
+      9021.73,
+      9244.59
+    ],
+    "sensor_11": [
+      46.85,
+      48.53
+    ],
+    "sensor_12": [
+      518.69,
+      523.38
+    ],
+    "sensor_13": [
+      2387.88,
+      2388.56
+    ],
+    "sensor_14": [
+      8099.94,
+      8293.72
+    ],
+    "sensor_15": [
+      8.3249,
+      8.5848
+    ],
+    "sensor_17": [
+      388.0,
+      400.0
+    ],
+    "sensor_20": [
+      38.14,
+      39.43
+    ],
+    "sensor_21": [
+      22.8942,
+      23.6184
+    ],
+    "setting_1": [
+      -0.0087,
+      0.0087
+    ],
+    "setting_2": [
+      -0.0006,
+      0.0006
+    ],
+    "setting_3": [
+      100.0,
+      100.0
+    ]
+  },
+  "observed_hours": 2.0211111111111113,
+  "policies": {
+    "Raw": {
+      "events": 7,
+      "hits": 6,
+      "alerts": 298,
+      "false_events": 195,
+      "false_alarm_seconds": 660.0,
+      "alert_seconds": 1284.0,
+      "normal_seconds": 4719.0,
+      "median_delay_seconds": 17.5,
+      "false_events_per_observed_hour": 96.4815832875206,
+      "false_alarm_fraction_of_normal_time": 0.13986013986013987,
+      "alert_occupancy": 0.17647058823529413,
+      "missed_events": 1
+    },
+    "Grouped": {
+      "events": 7,
+      "hits": 5,
+      "alerts": 82,
+      "false_events": 45,
+      "false_alarm_seconds": 505.0,
+      "alert_seconds": 1030.0,
+      "normal_seconds": 4719.0,
+      "median_delay_seconds": 288.0,
+      "false_events_per_observed_hour": 22.264980758658602,
+      "false_alarm_fraction_of_normal_time": 0.10701419792328883,
+      "alert_occupancy": 0.14156129741616272,
+      "missed_events": 2
+    }
+  },
+  "run_drift": [
+    {
+      "run": "anomaly-free/anomaly-free.csv",
+      "role": "train",
+      "median_normal_ratio": 0.23005906481080712,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "other/5.csv",
+      "role": "train",
+      "median_normal_ratio": 0.2378531420842032,
+      "normal_raw_alert_rate": 0.0026845637583892616
+    },
+    {
+      "run": "other/6.csv",
+      "role": "train",
+      "median_normal_ratio": 0.24282490756922465,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "other/7.csv",
+      "role": "train",
+      "median_normal_ratio": 0.24619702399382903,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "other/8.csv",
+      "role": "train",
+      "median_normal_ratio": 0.2532202067961813,
+      "normal_raw_alert_rate": 0.0013440860215053765
+    },
+    {
+      "run": "other/9.csv",
+      "role": "train",
+      "median_normal_ratio": 0.22298268192006965,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "other/10.csv",
+      "role": "train",
+      "median_normal_ratio": 0.27657226866385665,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "other/11.csv",
+      "role": "train",
+      "median_normal_ratio": 0.29831628341488103,
+      "normal_raw_alert_rate": 0.0013531799729364006
+    },
+    {
+      "run": "other/12.csv",
+      "role": "train",
+      "median_normal_ratio": 0.29403410737170654,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "other/13.csv",
+      "role": "train",
+      "median_normal_ratio": 0.2955452944090883,
+      "normal_raw_alert_rate": 0.060790273556231005
+    },
+    {
+      "run": "other/14.csv",
+      "role": "train",
+      "median_normal_ratio": 0.25973862168388684,
+      "normal_raw_alert_rate": 0.014925373134328358
+    },
+    {
+      "run": "other/1.csv",
+      "role": "train",
+      "median_normal_ratio": 0.26430759505512813,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "other/2.csv",
+      "role": "train",
+      "median_normal_ratio": 0.2494115027809729,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "other/3.csv",
+      "role": "train",
+      "median_normal_ratio": 0.25420804320997875,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "other/4.csv",
+      "role": "train",
+      "median_normal_ratio": 0.2548273033695412,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "valve1/0.csv",
+      "role": "train",
+      "median_normal_ratio": 0.22284289889760583,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "valve1/1.csv",
+      "role": "train",
+      "median_normal_ratio": 0.25390751367424175,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "valve1/2.csv",
+      "role": "train",
+      "median_normal_ratio": 0.2450443998359708,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "valve1/3.csv",
+      "role": "train",
+      "median_normal_ratio": 0.2305091651943299,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "valve1/4.csv",
+      "role": "train",
+      "median_normal_ratio": 0.24599759291924575,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "valve1/5.csv",
+      "role": "train",
+      "median_normal_ratio": 0.20296064135819078,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "valve1/6.csv",
+      "role": "calibration",
+      "median_normal_ratio": 0.40289053055057966,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "valve1/7.csv",
+      "role": "calibration",
+      "median_normal_ratio": 0.3392828968242393,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "valve1/8.csv",
+      "role": "calibration",
+      "median_normal_ratio": 0.46096853080685624,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "valve1/9.csv",
+      "role": "calibration",
+      "median_normal_ratio": 0.5511843628859732,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "valve1/10.csv",
+      "role": "calibration",
+      "median_normal_ratio": 0.5885550664889376,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "valve1/11.csv",
+      "role": "calibration",
+      "median_normal_ratio": 0.6227209063839878,
+      "normal_raw_alert_rate": 0.0
+    },
+    {
+      "run": "valve1/12.csv",
+      "role": "calibration",
+      "median_normal_ratio": 0.571052560184891,
+      "normal_raw_alert_rate": 0.06882591093117409
+    },
+    {
+      "run": "valve1/13.csv",
+      "role": "test",
+      "median_normal_ratio": 0.8681099870075751,
+      "normal_raw_alert_rate": 0.13630229419703105
+    },
+    {
+      "run": "valve1/14.csv",
+      "role": "test",
+      "median_normal_ratio": 0.7975669370098224,
+      "normal_raw_alert_rate": 0.02837837837837838
+    },
+    {
+      "run": "valve1/15.csv",
+      "role": "test",
+      "median_normal_ratio": 0.7472210665470809,
+      "normal_raw_alert_rate": 0.013404825737265416
+    },
+    {
+      "run": "valve2/0.csv",
+      "role": "test",
+      "median_normal_ratio": 0.6842190193901108,
+      "normal_raw_alert_rate": 0.1121751025991792
+    },
+    {
+      "run": "valve2/1.csv",
+      "role": "test",
+      "median_normal_ratio": 0.8992758847792874,
+      "normal_raw_alert_rate": 0.2356164383561644
+    },
+    {
+      "run": "valve2/2.csv",
+      "role": "test",
+      "median_normal_ratio": 0.8445454082085869,
+      "normal_raw_alert_rate": 0.18664850136239783
+    },
+    {
+      "run": "valve2/3.csv",
+      "role": "test",
+      "median_normal_ratio": 0.9375158077573733,
+      "normal_raw_alert_rate": 0.3016666666666667
+    }
+  ],
+  "normal_alert_driver_counts": {
+    "Accelerometer1RMS": 0,
+    "Accelerometer2RMS": 0,
+    "Current": 0,
+    "Pressure": 0,
+    "Temperature": 678,
+    "Thermocouple": 26,
+    "Voltage": 0,
+    "Volume Flow RateRMS": 0
+  },
+  "normal_alert_points": 704,
+  "training_ranges": {
+    "Accelerometer1RMS": [
+      0.0157521,
+      0.628919
+    ],
+    "Accelerometer2RMS": [
+      0.0155046,
+      0.709893
+    ],
+    "Current": [
+      0.149842,
+      3.25451
+    ],
+    "Pressure": [
+      -1.257,
+      1.36642
+    ],
+    "Temperature": [
+      67.9737,
+      95.0114
+    ],
+    "Thermocouple": [
+      22.067,
+      33.2628
+    ],
+    "Voltage": [
+      200.744,
+      255.324
+    ],
+    "Volume Flow RateRMS": [
+      0.556171,
+      131.0
+    ]
+  },
+  "events": [
+    {
+      "run": "valve1/13.csv",
+      "start_sample": 570,
+      "end_sample": 969,
+      "raw_delay_s": null,
+      "grouped_delay_s": null
+    },
+    {
+      "run": "valve1/14.csv",
+      "start_sample": 569,
+      "end_sample": 968,
+      "raw_delay_s": 305.0,
+      "grouped_delay_s": 309.0
+    },
+    {
+      "run": "valve1/15.csv",
+      "start_sample": 574,
+      "end_sample": 978,
+      "raw_delay_s": 0.0,
+      "grouped_delay_s": 7.0
+    },
+    {
+      "run": "valve2/0.csv",
+      "start_sample": 562,
+      "end_sample": 956,
+      "raw_delay_s": 264.0,
+      "grouped_delay_s": 288.0
+    },
+    {
+      "run": "valve2/1.csv",
+      "start_sample": 560,
+      "end_sample": 893,
+      "raw_delay_s": 6.0,
+      "grouped_delay_s": 400.0
+    },
+    {
+      "run": "valve2/2.csv",
+      "start_sample": 565,
+      "end_sample": 960,
+      "raw_delay_s": 0.0,
+      "grouped_delay_s": 0.0
+    },
+    {
+      "run": "valve2/3.csv",
+      "start_sample": 564,
+      "end_sample": 959,
+      "raw_delay_s": 29.0,
+      "grouped_delay_s": null
+    }
+  ],
+  "common_event_delays": {
+    "count": 5,
+    "excluded": 2,
+    "raw_median_s": 6.0,
+    "grouped_median_s": 288.0
+  },
+  "protocol": "Fixed illustrative rule: three successive scores above threshold open an alert. Five below 0.85 times threshold clear it. Gaps above 1.5 seconds reset state; unobserved intervals are excluded from time-based metrics. Exploratory comparison on previously inspected runs. No threshold refit."
+}

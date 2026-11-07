@@ -1,0 +1,142 @@
+{
+  "calibration": {
+    "threshold_fit_runs": [
+      "valve1/6.csv",
+      "valve1/7.csv",
+      "valve1/8.csv"
+    ],
+    "development_evaluation_runs": [
+      "valve1/9.csv",
+      "valve1/10.csv",
+      "valve1/11.csv",
+      "valve1/12.csv"
+    ],
+    "candidates": [
+      {
+        "candidate": "Pooled normal 99th percentile",
+        "threshold": 2.112824952128477,
+        "events": 4,
+        "hits": 3,
+        "false_alarm_seconds": 666.0,
+        "normal_seconds": 2825.0,
+        "normal_time_alarm_rate": 0.23575221238938054,
+        "median_detected_delay_s": 0.0,
+        "per_run": [
+          {
+            "run": "valve1/9.csv",
+            "false_alarm_seconds": 70.0,
+            "normal_seconds": 711.0
+          },
+          {
+            "run": "valve1/10.csv",
+            "false_alarm_seconds": 163.0,
+            "normal_seconds": 709.0
+          },
+          {
+            "run": "valve1/11.csv",
+            "false_alarm_seconds": 253.0,
+            "normal_seconds": 704.0
+          },
+          {
+            "run": "valve1/12.csv",
+            "false_alarm_seconds": 180.0,
+            "normal_seconds": 701.0
+          }
+        ]
+      },
+      {
+        "candidate": "Conservative runwise 99th percentile",
+        "threshold": 2.1409290226294972,
+        "events": 4,
+        "hits": 3,
+        "false_alarm_seconds": 634.0,
+        "normal_seconds": 2825.0,
+        "normal_time_alarm_rate": 0.22442477876106195,
+        "median_detected_delay_s": 0.0,
+        "per_run": [
+          {
+            "run": "valve1/9.csv",
+            "false_alarm_seconds": 70.0,
+            "normal_seconds": 711.0
+          },
+          {
+            "run": "valve1/10.csv",
+            "false_alarm_seconds": 140.0,
+            "normal_seconds": 709.0
+          },
+          {
+            "run": "valve1/11.csv",
+            "false_alarm_seconds": 252.0,
+            "normal_seconds": 704.0
+          },
+          {
+            "run": "valve1/12.csv",
+            "false_alarm_seconds": 172.0,
+            "normal_seconds": 701.0
+          }
+        ]
+      }
+    ],
+    "decision": "Keep the existing detector and threshold. This small development comparison does not establish deployment calibration or justify a new test claim.",
+    "protocol": "Two fixed threshold candidates, fitted on the first three chronological calibration runs and evaluated on the final four. Detector fitted on earlier training runs only. No test runs used. Exploratory analysis added after the original test had been inspected; requires independent replication."
+  },
+  "forecast": {
+    "protocol": "Retrospective diagnostic at fixed 50%, 75%, 100% of each available test trajectory, one observation per engine per cutoff. Uncapped actual RUL; causal feature windows. A persistent warning is three successive predictions at or below 30 cycles. Previously inspected test; no new model selection or independent performance claim.",
+    "cutoffs": [
+      {
+        "observed_fraction": 0.5,
+        "engines": 100,
+        "mae_cycles": 28.61674675779113,
+        "horizon_30": {
+          "horizon": 30,
+          "precision": 0.0,
+          "recall": 0.0,
+          "false_positive_rate": 0.0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 100,
+          "alerts": 0
+        },
+        "persistent_false_early_warnings": 0,
+        "persistent_hits": 0
+      },
+      {
+        "observed_fraction": 0.75,
+        "engines": 100,
+        "mae_cycles": 14.864177805786026,
+        "horizon_30": {
+          "horizon": 30,
+          "precision": 0.0,
+          "recall": 0.0,
+          "false_positive_rate": 0.0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 100,
+          "alerts": 0
+        },
+        "persistent_false_early_warnings": 0,
+        "persistent_hits": 0
+      },
+      {
+        "observed_fraction": 1.0,
+        "engines": 100,
+        "mae_cycles": 9.281878301564207,
+        "horizon_30": {
+          "horizon": 30,
+          "precision": 0.9583333333333334,
+          "recall": 0.92,
+          "false_positive_rate": 0.013333333333333334,
+          "tp": 23,
+          "fp": 1,
+          "fn": 2,
+          "tn": 74,
+          "alerts": 24
+        },
+        "persistent_false_early_warnings": 0,
+        "persistent_hits": 22
+      }
+    ]
+  }
+}

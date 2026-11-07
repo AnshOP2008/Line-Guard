@@ -1,0 +1,9 @@
+.venv
+.git
+**/__pycache__
+.pytest_cache
+data/SKAB/.git
+data/cmapss.zip
+data/feedback.sqlite3*
+*.log
+_snapshot.tgz

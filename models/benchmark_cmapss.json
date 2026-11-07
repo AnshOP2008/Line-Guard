@@ -1,0 +1,115 @@
+{
+  "protocol": "Generalisation check: the FD001 recipe on all four NASA C-MAPSS subsets.\n\nThe FD001 configuration (drift features + gradient boosting, same hyperparameters) is\npredeclared and reused unchanged; nothing is tuned per subset. FD002 and FD004 run under\nsix operating conditions, so sensors are first z-scored per operating regime. Regimes\nare KMeans clusters of the three operating settings fitted on training data only.\nEach subset's official test set is evaluated once.",
+  "subsets": {
+    "FD001": {
+      "conditions": 1,
+      "fault_modes": 1,
+      "regime_normalised": false,
+      "result": {
+        "mae": 9.281878301564207,
+        "rmse": 12.660506356709423,
+        "rmse_capped_truth": 11.3057303392659,
+        "nasa_score": 209.0302509716435,
+        "train_engines": 100,
+        "test_engines": 100
+      }
+    },
+    "FD002": {
+      "conditions": 6,
+      "fault_modes": 1,
+      "regime_normalised": true,
+      "result": {
+        "mae": 14.60778713922229,
+        "rmse": 23.113517027794916,
+        "rmse_capped_truth": 10.761469461868678,
+        "nasa_score": 3782.8588523977705,
+        "train_engines": 260,
+        "test_engines": 259
+      },
+      "ablation_without_regime_normalisation": {
+        "mae": 21.618527166231903,
+        "rmse": 28.954566023498813,
+        "rmse_capped_truth": 18.099807111978585,
+        "nasa_score": 9298.089276797877,
+        "train_engines": 260,
+        "test_engines": 259
+      }
+    },
+    "FD003": {
+      "conditions": 1,
+      "fault_modes": 2,
+      "regime_normalised": false,
+      "result": {
+        "mae": 8.25577189799459,
+        "rmse": 11.469235875752908,
+        "rmse_capped_truth": 9.575479145836393,
+        "nasa_score": 212.12728911611555,
+        "train_engines": 100,
+        "test_engines": 100
+      }
+    },
+    "FD004": {
+      "conditions": 6,
+      "fault_modes": 2,
+      "regime_normalised": true,
+      "result": {
+        "mae": 16.10070562590702,
+        "rmse": 24.08671074387322,
+        "rmse_capped_truth": 11.266766576552804,
+        "nasa_score": 3597.843114331582,
+        "train_engines": 249,
+        "test_engines": 248
+      },
+      "ablation_without_regime_normalisation": {
+        "mae": 27.570438328949955,
+        "rmse": 34.305963340453495,
+        "rmse_capped_truth": 24.113989818855693,
+        "nasa_score": 14357.493532333076,
+        "train_engines": 249,
+        "test_engines": 248
+      }
+    }
+  },
+  "literature_rmse": {
+    "note": "Published RMSE values as collected in arXiv:2511.19124, Table I. Protocols differ between papers (test-truth capping, windowing), so treat as context, not a leaderboard.",
+    "source": "https://arxiv.org/abs/2511.19124",
+    "rows": {
+      "Bi-LSTM": [
+        17.6,
+        29.67,
+        17.62,
+        31.84
+      ],
+      "CNN-LSTM-Attention": [
+        15.98,
+        14.45,
+        13.91,
+        16.64
+      ],
+      "CAELSTM": [
+        14.44,
+        null,
+        13.4,
+        null
+      ],
+      "ABGRU": [
+        12.83,
+        null,
+        13.23,
+        null
+      ],
+      "Transformer": [
+        11.36,
+        null,
+        11.28,
+        null
+      ],
+      "TCNN-Transformer": [
+        null,
+        15.2,
+        null,
+        17.3
+      ]
+    }
+  }
+}

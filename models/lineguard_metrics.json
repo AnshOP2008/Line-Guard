@@ -1,0 +1,760 @@
+{
+  "primary": "Cross-sensor residual",
+  "seed": 42,
+  "target_point_fpr": 0.01,
+  "features": [
+    "Accelerometer1RMS",
+    "Accelerometer2RMS",
+    "Current",
+    "Pressure",
+    "Temperature",
+    "Thermocouple",
+    "Voltage",
+    "Volume Flow RateRMS"
+  ],
+  "names": [
+    "Vibration \u00b7 drive",
+    "Vibration \u00b7 pump",
+    "Motor current",
+    "Loop pressure",
+    "Motor temperature",
+    "Fluid temperature",
+    "Motor voltage",
+    "Flow rate"
+  ],
+  "units": [
+    "g",
+    "g",
+    "A",
+    "bar",
+    "\u00b0C",
+    "\u00b0C",
+    "V",
+    "L/min"
+  ],
+  "train_count": 23561,
+  "calibration_count": 5156,
+  "test_count": 7741,
+  "train_runs": 21,
+  "methods": {
+    "Rolling z baseline": {
+      "threshold": 2.9947126174485765,
+      "calibration_fpr": 0.009891388673390225,
+      "test_point_precision": 0.7161572052401747,
+      "test_point_recall": 0.06031629275468922,
+      "test_pr_auc": 0.3944515201883385,
+      "test_normal_fpr": 0.012943050577459179,
+      "event_recall": 0.2857142857142857,
+      "event_precision": 0.6,
+      "median_detection_delay_s": 161.5,
+      "events": 7,
+      "detected_events": 2,
+      "alarm_events": 5,
+      "per_run": [
+        {
+          "run": "valve1/13.csv",
+          "point_precision": 0.0,
+          "point_recall": 0.0,
+          "events": 1,
+          "detected_events": 0,
+          "alarm_events": 1,
+          "true_alarm_events": 0,
+          "delays_s": [],
+          "normal_points": 741,
+          "false_positive_points": 51
+        },
+        {
+          "run": "valve1/14.csv",
+          "point_precision": 0.0,
+          "point_recall": 0.0,
+          "events": 1,
+          "detected_events": 0,
+          "alarm_events": 0,
+          "true_alarm_events": 0,
+          "delays_s": [],
+          "normal_points": 740,
+          "false_positive_points": 0
+        },
+        {
+          "run": "valve1/15.csv",
+          "point_precision": 1.0,
+          "point_recall": 0.22772277227722773,
+          "events": 1,
+          "detected_events": 1,
+          "alarm_events": 2,
+          "true_alarm_events": 2,
+          "delays_s": [
+            5.0
+          ],
+          "normal_points": 746,
+          "false_positive_points": 0
+        },
+        {
+          "run": "valve2/0.csv",
+          "point_precision": 1.0,
+          "point_recall": 0.18274111675126903,
+          "events": 1,
+          "detected_events": 1,
+          "alarm_events": 1,
+          "true_alarm_events": 1,
+          "delays_s": [
+            318.0
+          ],
+          "normal_points": 731,
+          "false_positive_points": 0
+        },
+        {
+          "run": "valve2/1.csv",
+          "point_precision": 0.0,
+          "point_recall": 0.0,
+          "events": 1,
+          "detected_events": 0,
+          "alarm_events": 0,
+          "true_alarm_events": 0,
+          "delays_s": [],
+          "normal_points": 730,
+          "false_positive_points": 0
+        },
+        {
+          "run": "valve2/2.csv",
+          "point_precision": 0.0,
+          "point_recall": 0.0,
+          "events": 1,
+          "detected_events": 0,
+          "alarm_events": 1,
+          "true_alarm_events": 0,
+          "delays_s": [],
+          "normal_points": 734,
+          "false_positive_points": 14
+        },
+        {
+          "run": "valve2/3.csv",
+          "point_precision": 0.0,
+          "point_recall": 0.0,
+          "events": 1,
+          "detected_events": 0,
+          "alarm_events": 0,
+          "true_alarm_events": 0,
+          "delays_s": [],
+          "normal_points": 600,
+          "false_positive_points": 0
+        }
+      ]
+    },
+    "PCA reconstruction": {
+      "threshold": 0.15863363190325674,
+      "calibration_fpr": 0.009891388673390225,
+      "test_point_precision": 0.40057636887608067,
+      "test_point_recall": 0.05112173593232806,
+      "test_pr_auc": 0.3473568472959777,
+      "test_normal_fpr": 0.041417761847869376,
+      "event_recall": 1.0,
+      "event_precision": 0.3825503355704698,
+      "median_detection_delay_s": 32.0,
+      "events": 7,
+      "detected_events": 7,
+      "alarm_events": 298,
+      "per_run": [
+        {
+          "run": "valve1/13.csv",
+          "point_precision": 0.1951219512195122,
+          "point_recall": 0.020050125313283207,
+          "events": 1,
+          "detected_events": 1,
+          "alarm_events": 39,
+          "true_alarm_events": 8,
+          "delays_s": [
+            96.0
+          ],
+          "normal_points": 741,
+          "false_positive_points": 33
+        },
+        {
+          "run": "valve1/14.csv",
+          "point_precision": 0.3333333333333333,
+          "point_recall": 0.03258145363408521,
+          "events": 1,
+          "detected_events": 1,
+          "alarm_events": 37,
+          "true_alarm_events": 11,
+          "delays_s": [
+            32.0
+          ],
+          "normal_points": 740,
+          "false_positive_points": 26
+        },
+        {
+          "run": "valve1/15.csv",
+          "point_precision": 0.6666666666666666,
+          "point_recall": 0.0891089108910891,
+          "events": 1,
+          "detected_events": 1,
+          "alarm_events": 47,
+          "true_alarm_events": 30,
+          "delays_s": [
+            27.0
+          ],
+          "normal_points": 746,
+          "false_positive_points": 18
+        },
+        {
+          "run": "valve2/0.csv",
+          "point_precision": 0.7254901960784313,
+          "point_recall": 0.09390862944162437,
+          "events": 1,
+          "detected_events": 1,
+          "alarm_events": 36,
+          "true_alarm_events": 23,
+          "delays_s": [
+            15.0
+          ],
+          "normal_points": 731,
+          "false_positive_points": 14
+        },
+        {
+          "run": "valve2/1.csv",
+          "point_precision": 0.2112676056338028,
+          "point_recall": 0.04504504504504504,
+          "events": 1,
+          "detected_events": 1,
+          "alarm_events": 56,
+          "true_alarm_events": 13,
+          "delays_s": [
+            50.0
+          ],
+          "normal_points": 730,
+          "false_positive_points": 56
+        },
+        {
+          "run": "valve2/2.csv",
+          "point_precision": 0.44642857142857145,
+          "point_recall": 0.06329113924050633,
+          "events": 1,
+          "detected_events": 1,
+          "alarm_events": 50,
+          "true_alarm_events": 24,
+          "delays_s": [
+            17.0
+          ],
+          "normal_points": 734,
+          "false_positive_points": 31
+        },
+        {
+          "run": "valve2/3.csv",
+          "point_precision": 0.14285714285714285,
+          "point_recall": 0.012658227848101266,
+          "events": 1,
+          "detected_events": 1,
+          "alarm_events": 33,
+          "true_alarm_events": 5,
+          "delays_s": [
+            53.0
+          ],
+          "normal_points": 600,
+          "false_positive_points": 30
+        }
+      ]
+    },
+    "Cross-sensor residual": {
+      "threshold": 3.3011354742643015,
+      "calibration_fpr": 0.009891388673390225,
+      "test_point_precision": 0.48462664714494874,
+      "test_point_recall": 0.24347186465612358,
+      "test_pr_auc": 0.4664193157696329,
+      "test_normal_fpr": 0.1401831939466348,
+      "event_recall": 0.8571428571428571,
+      "event_precision": 0.34563758389261745,
+      "median_detection_delay_s": 17.5,
+      "events": 7,
+      "detected_events": 6,
+      "alarm_events": 298,
+      "per_run": [
+        {
+          "run": "valve1/13.csv",
+          "point_precision": 0.0,
+          "point_recall": 0.0,
+          "events": 1,
+          "detected_events": 0,
+          "alarm_events": 35,
+          "true_alarm_events": 0,
+          "delays_s": [],
+          "normal_points": 741,
+          "false_positive_points": 101
+        },
+        {
+          "run": "valve1/14.csv",
+          "point_precision": 0.7613636363636364,
+          "point_recall": 0.16791979949874686,
+          "events": 1,
+          "detected_events": 1,
+          "alarm_events": 22,
+          "true_alarm_events": 9,
+          "delays_s": [
+            305.0
+          ],
+          "normal_points": 740,
+          "false_positive_points": 21
+        },
+        {
+          "run": "valve1/15.csv",
+          "point_precision": 0.96996996996997,
+          "point_recall": 0.7995049504950495,
+          "events": 1,
+          "detected_events": 1,
+          "alarm_events": 20,
+          "true_alarm_events": 12,
+          "delays_s": [
+            0.0
+          ],
+          "normal_points": 746,
+          "false_positive_points": 10
+        },
+        {
+          "run": "valve2/0.csv",
+          "point_precision": 0.6132075471698113,
+          "point_recall": 0.3299492385786802,
+          "events": 1,
+          "detected_events": 1,
+          "alarm_events": 27,
+          "true_alarm_events": 4,
+          "delays_s": [
+            264.0
+          ],
+          "normal_points": 731,
+          "false_positive_points": 82
+        },
+        {
+          "run": "valve2/1.csv",
+          "point_precision": 0.17307692307692307,
+          "point_recall": 0.10810810810810811,
+          "events": 1,
+          "detected_events": 1,
+          "alarm_events": 68,
+          "true_alarm_events": 17,
+          "delays_s": [
+            6.0
+          ],
+          "normal_points": 730,
+          "false_positive_points": 172
+        },
+        {
+          "run": "valve2/2.csv",
+          "point_precision": 0.43388429752066116,
+          "point_recall": 0.26582278481012656,
+          "events": 1,
+          "detected_events": 1,
+          "alarm_events": 76,
+          "true_alarm_events": 60,
+          "delays_s": [
+            0.0
+          ],
+          "normal_points": 734,
+          "false_positive_points": 137
+        },
+        {
+          "run": "valve2/3.csv",
+          "point_precision": 0.005494505494505495,
+          "point_recall": 0.002531645569620253,
+          "events": 1,
+          "detected_events": 1,
+          "alarm_events": 50,
+          "true_alarm_events": 1,
+          "delays_s": [
+            29.0
+          ],
+          "normal_points": 600,
+          "false_positive_points": 181
+        }
+      ]
+    }
+  },
+  "manifest": [
+    {
+      "run": "anomaly-free/anomaly-free.csv",
+      "role": "train",
+      "normal_points": 9405,
+      "total_points": 9405,
+      "start": "2020-02-08 13:30:47",
+      "end": "2020-02-08 16:16:47",
+      "sha256": "7641a8742957100ef424dd97adfb3eeab27d4d180645fe2b3c49b7f7146ae9a6"
+    },
+    {
+      "run": "other/5.csv",
+      "role": "train",
+      "normal_points": 745,
+      "total_points": 1155,
+      "start": "2020-02-08 16:06:48",
+      "end": "2020-02-08 16:26:56",
+      "sha256": "2a45d0137192e6c62ac123e1f75edaeb798568201f31ec28d87f1a81fb25cafe"
+    },
+    {
+      "run": "other/6.csv",
+      "role": "train",
+      "normal_points": 745,
+      "total_points": 1147,
+      "start": "2020-02-08 16:27:09",
+      "end": "2020-02-08 16:47:09",
+      "sha256": "1ab453f17a150f2eb4992601c0f446c81c4e627955cf342cbbb27eb13e054fd5"
+    },
+    {
+      "run": "other/7.csv",
+      "role": "train",
+      "normal_points": 743,
+      "total_points": 1090,
+      "start": "2020-02-08 16:47:11",
+      "end": "2020-02-08 17:06:12",
+      "sha256": "da45d46dadb4901350dc857b032cd2e7289913f9e90f019a144ec34569583024"
+    },
+    {
+      "run": "other/8.csv",
+      "role": "train",
+      "normal_points": 744,
+      "total_points": 1147,
+      "start": "2020-02-08 17:07:11",
+      "end": "2020-02-08 17:27:13",
+      "sha256": "06b8386d75f5d2fd7c9ef00c4d996e0fe2ce9efb83da8f4c3e53abd0421f5dde"
+    },
+    {
+      "run": "other/9.csv",
+      "role": "train",
+      "normal_points": 743,
+      "total_points": 1144,
+      "start": "2020-02-08 17:27:19",
+      "end": "2020-02-08 17:47:18",
+      "sha256": "11c4514b0bc706acff637fea6707ad9258ac878fe9dff3d0b11d2b618d94d8ea"
+    },
+    {
+      "run": "other/10.csv",
+      "role": "train",
+      "normal_points": 741,
+      "total_points": 1327,
+      "start": "2020-02-08 17:47:44",
+      "end": "2020-02-08 18:11:02",
+      "sha256": "27bc0a8f7e7c5d566fb645863d72bfb81261b142516dbe18f2bd67f7d763a028"
+    },
+    {
+      "run": "other/11.csv",
+      "role": "train",
+      "normal_points": 739,
+      "total_points": 1190,
+      "start": "2020-02-08 18:10:42",
+      "end": "2020-02-08 18:31:36",
+      "sha256": "98a2fff3b6516205ae2e12f2dd30d7f08465fe4321a1bd5cf823396985ecb37b"
+    },
+    {
+      "run": "other/12.csv",
+      "role": "train",
+      "normal_points": 739,
+      "total_points": 1048,
+      "start": "2020-02-08 18:34:51",
+      "end": "2020-02-08 18:54:54",
+      "sha256": "b0882efbcf2669223ae78bee61c9f10074a9b2375f0e86b8957ae5ce4aad1e72"
+    },
+    {
+      "run": "other/13.csv",
+      "role": "train",
+      "normal_points": 658,
+      "total_points": 923,
+      "start": "2020-02-08 18:47:32",
+      "end": "2020-02-08 19:06:26",
+      "sha256": "b3f1da02064d11234836a9fa1a2536bb0d3b6c6998ab60b0b71869b98e94d860"
+    },
+    {
+      "run": "other/14.csv",
+      "role": "train",
+      "normal_points": 603,
+      "total_points": 905,
+      "start": "2020-02-08 19:16:28",
+      "end": "2020-02-08 19:32:19",
+      "sha256": "c7f361e55397cc9efd4a76b6876111eda79b650d10aeb007342ca5972152eaef"
+    },
+    {
+      "run": "other/1.csv",
+      "role": "train",
+      "normal_points": 557,
+      "total_points": 745,
+      "start": "2020-03-01 15:44:06",
+      "end": "2020-03-01 15:57:06",
+      "sha256": "2ce422173ccfd67d2991c91d4912471f9ffe75e401ec711eea12e3113f98925a"
+    },
+    {
+      "run": "other/2.csv",
+      "role": "train",
+      "normal_points": 396,
+      "total_points": 780,
+      "start": "2020-03-01 16:28:16",
+      "end": "2020-03-01 16:45:59",
+      "sha256": "3656eec056409db000726ff1c8900ff223c1760422f7938451acf7943778cbb9"
+    },
+    {
+      "run": "other/3.csv",
+      "role": "train",
+      "normal_points": 739,
+      "total_points": 1137,
+      "start": "2020-03-01 16:43:54",
+      "end": "2020-03-01 17:03:52",
+      "sha256": "2171522497eb7cf88ba1385fc82de75458b14be4d1f6078bb5373d27783f579e"
+    },
+    {
+      "run": "other/4.csv",
+      "role": "train",
+      "normal_points": 796,
+      "total_points": 1191,
+      "start": "2020-03-01 16:59:53",
+      "end": "2020-03-01 17:20:49",
+      "sha256": "22ec5da0b2b4ebfcd1aea4931e7d350044bf1d1420a043a8824a4b9baf3ab410"
+    },
+    {
+      "run": "valve1/0.csv",
+      "role": "train",
+      "normal_points": 746,
+      "total_points": 1147,
+      "start": "2020-03-09 10:14:33",
+      "end": "2020-03-09 10:34:32",
+      "sha256": "16af3f71313a23dd33d9b7b8065d836d05c3f9257588881cc7fbe07c076d9dc8"
+    },
+    {
+      "run": "valve1/1.csv",
+      "role": "train",
+      "normal_points": 743,
+      "total_points": 1145,
+      "start": "2020-03-09 10:34:33",
+      "end": "2020-03-09 10:54:33",
+      "sha256": "fe4493bf805baef4e6dfb864094275d8cc2ea80a16b3735e2752b18b6aefd812"
+    },
+    {
+      "run": "valve1/2.csv",
+      "role": "train",
+      "normal_points": 738,
+      "total_points": 1075,
+      "start": "2020-03-09 10:54:34",
+      "end": "2020-03-09 11:14:33",
+      "sha256": "90492413469261886c8896c327241448df5da73fd7739cabfec8dd82de3c0ce4"
+    },
+    {
+      "run": "valve1/3.csv",
+      "role": "train",
+      "normal_points": 744,
+      "total_points": 1148,
+      "start": "2020-03-09 11:14:34",
+      "end": "2020-03-09 11:34:35",
+      "sha256": "cb6afea108eddfd8447307e405f86bbb764b8d8e9130d7849a46e1303e19b8b2"
+    },
+    {
+      "run": "valve1/4.csv",
+      "role": "train",
+      "normal_points": 746,
+      "total_points": 1095,
+      "start": "2020-03-09 11:34:36",
+      "end": "2020-03-09 11:54:35",
+      "sha256": "983aed9dc09991a57911091373c580e1b86d06aa983cd51678f108fd8d709654"
+    },
+    {
+      "run": "valve1/5.csv",
+      "role": "train",
+      "normal_points": 751,
+      "total_points": 1154,
+      "start": "2020-03-09 11:54:36",
+      "end": "2020-03-09 12:14:35",
+      "sha256": "78974991ec87b7f9b9b6b2944f4b525468a9beb36c59b06cd7650d9a15eca14a"
+    },
+    {
+      "run": "valve1/6.csv",
+      "role": "calibration",
+      "normal_points": 749,
+      "total_points": 1154,
+      "start": "2020-03-09 12:14:36",
+      "end": "2020-03-09 12:34:35",
+      "sha256": "97469c0e0c9c0e0ee5d30794f1f36c6785df5816a112a8b16c59637e8c894685"
+    },
+    {
+      "run": "valve1/7.csv",
+      "role": "calibration",
+      "normal_points": 689,
+      "total_points": 1094,
+      "start": "2020-03-09 12:34:37",
+      "end": "2020-03-09 12:54:37",
+      "sha256": "ca2c9c6d6fa302c642acec6fbedac495bd12fececeee0a755d45a54e340e0f30"
+    },
+    {
+      "run": "valve1/8.csv",
+      "role": "calibration",
+      "normal_points": 744,
+      "total_points": 1144,
+      "start": "2020-03-09 12:54:39",
+      "end": "2020-03-09 13:14:37",
+      "sha256": "0c4afb92248b5b35b4c9d734a91ed8318346901f04579074903730569e60416c"
+    },
+    {
+      "run": "valve1/9.csv",
+      "role": "calibration",
+      "normal_points": 746,
+      "total_points": 1148,
+      "start": "2020-03-09 13:14:38",
+      "end": "2020-03-09 13:34:38",
+      "sha256": "2aa1ae1b2ff505caecda24802b877dc686924bbbeeb7e7db4faa261efb5ed5bd"
+    },
+    {
+      "run": "valve1/10.csv",
+      "role": "calibration",
+      "normal_points": 745,
+      "total_points": 1146,
+      "start": "2020-03-09 13:34:39",
+      "end": "2020-03-09 13:54:38",
+      "sha256": "ee16be8e4b870c779491e3d1dc9e0ecbfaf29eb013e032abff7a33f2cbbfe2ad"
+    },
+    {
+      "run": "valve1/11.csv",
+      "role": "calibration",
+      "normal_points": 742,
+      "total_points": 1141,
+      "start": "2020-03-09 13:54:39",
+      "end": "2020-03-09 14:14:39",
+      "sha256": "89660fae4ed5c918db014409bbbc29f498fd99c7e956fab2620d18dea700a973"
+    },
+    {
+      "run": "valve1/12.csv",
+      "role": "calibration",
+      "normal_points": 741,
+      "total_points": 1140,
+      "start": "2020-03-09 14:14:40",
+      "end": "2020-03-09 14:34:40",
+      "sha256": "90adfa9bc86d4556e6a4ce734436fd5685af79c189cd9828f8df75a7f468ce07"
+    },
+    {
+      "run": "valve1/13.csv",
+      "role": "test",
+      "normal_points": 741,
+      "total_points": 1140,
+      "start": "2020-03-09 14:34:41",
+      "end": "2020-03-09 14:54:40",
+      "sha256": "d6cb6a97437215d3066a87e1fcc5fa4e68017629c043c5315920e3cf1060841c"
+    },
+    {
+      "run": "valve1/14.csv",
+      "role": "test",
+      "normal_points": 740,
+      "total_points": 1139,
+      "start": "2020-03-09 14:54:41",
+      "end": "2020-03-09 15:14:40",
+      "sha256": "5f0bb9bc33c5e6c259263e32e25915c4d24c82b0a94554d48808626da05c1d71"
+    },
+    {
+      "run": "valve1/15.csv",
+      "role": "test",
+      "normal_points": 746,
+      "total_points": 1150,
+      "start": "2020-03-09 15:14:41",
+      "end": "2020-03-09 15:34:41",
+      "sha256": "75cc86ab25d7091eee024739fa06d048753480d5d7d1507077231cab4f1b7a7e"
+    },
+    {
+      "run": "valve2/0.csv",
+      "role": "test",
+      "normal_points": 731,
+      "total_points": 1125,
+      "start": "2020-03-09 15:56:30",
+      "end": "2020-03-09 16:16:29",
+      "sha256": "a6670e7a68c7c6ba62c649bd9d350633e80db624578e9529f2b736ced5e32bde"
+    },
+    {
+      "run": "valve2/1.csv",
+      "role": "test",
+      "normal_points": 730,
+      "total_points": 1063,
+      "start": "2020-03-09 16:16:30",
+      "end": "2020-03-09 16:36:30",
+      "sha256": "b35d27f664eb0851ab73e5eb06633404c7eeaf532edff7e40c68eb9379f2012b"
+    },
+    {
+      "run": "valve2/2.csv",
+      "role": "test",
+      "normal_points": 734,
+      "total_points": 1129,
+      "start": "2020-03-09 16:36:31",
+      "end": "2020-03-09 16:56:30",
+      "sha256": "2c3005cf28b88db715b7f4694e826ff252cba4dbb1eba679b040961f80477e60"
+    },
+    {
+      "run": "valve2/3.csv",
+      "role": "test",
+      "normal_points": 600,
+      "total_points": 995,
+      "start": "2020-03-09 16:56:31",
+      "end": "2020-03-09 17:14:09",
+      "sha256": "86927555d5c523e587d41500bd5dee4e2468289ec1b988ac17755aeae697d7f8"
+    }
+  ],
+  "injections": {
+    "spike": {
+      "injected_sensor": "Current",
+      "start": 200,
+      "end": 400,
+      "anomaly_detection_rate": 1.0,
+      "sensor_heuristic_rate": 1.0,
+      "top_sensor_attribution_rate": 1.0,
+      "note": "Synthetic injection into held-out normal tail; diagnostic heuristic, not sensor-fault classifier."
+    },
+    "drift": {
+      "injected_sensor": "Current",
+      "start": 200,
+      "end": 400,
+      "anomaly_detection_rate": 0.945,
+      "sensor_heuristic_rate": 0.0,
+      "top_sensor_attribution_rate": 0.53,
+      "note": "Synthetic injection into held-out normal tail; diagnostic heuristic, not sensor-fault classifier."
+    },
+    "flatline": {
+      "injected_sensor": "Current",
+      "start": 200,
+      "end": 400,
+      "anomaly_detection_rate": 0.06,
+      "sensor_heuristic_rate": 0.955,
+      "top_sensor_attribution_rate": 0.0,
+      "note": "Synthetic injection into held-out normal tail; diagnostic heuristic, not sensor-fault classifier."
+    }
+  },
+  "ablation": [
+    {
+      "sensor": "Accelerometer1RMS",
+      "test_point_recall": 1.0,
+      "test_normal_fpr": 1.0
+    },
+    {
+      "sensor": "Accelerometer2RMS",
+      "test_point_recall": 1.0,
+      "test_normal_fpr": 1.0
+    },
+    {
+      "sensor": "Current",
+      "test_point_recall": 0.618609783008459,
+      "test_normal_fpr": 0.508363201911589
+    },
+    {
+      "sensor": "Pressure",
+      "test_point_recall": 0.22030158146377343,
+      "test_normal_fpr": 0.11589008363201912
+    },
+    {
+      "sensor": "Temperature",
+      "test_point_recall": 1.0,
+      "test_normal_fpr": 1.0
+    },
+    {
+      "sensor": "Thermocouple",
+      "test_point_recall": 1.0,
+      "test_normal_fpr": 1.0
+    },
+    {
+      "sensor": "Voltage",
+      "test_point_recall": 0.22876057374034572,
+      "test_normal_fpr": 0.11429709279171645
+    },
+    {
+      "sensor": "Volume Flow RateRMS",
+      "test_point_recall": 1.0,
+      "test_normal_fpr": 1.0
+    }
+  ],
+  "split_contract": "Entire runs sorted by start timestamp: earliest 60% train, next 20% calibrate, latest 20% test (21/7/7 runs). Only labelled-normal rows in train/calibration are used. No test rows or labels enter fitting or calibration. Labels filter clean data retrospectively. Same physical rig; not independent sites. Distribution shift remains a deployment risk."
+}
