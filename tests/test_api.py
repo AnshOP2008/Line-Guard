@@ -96,7 +96,7 @@ def test_event_metrics_preserve_misses_and_delays():
     import numpy as np
     from app.train import evaluate
 
-    times = pd.Series(pd.date_range("2026-01-01", periods=12, freq="s"))
+    times = pd.Series(pd.date_range("2000-01-01", periods=12, freq="s"))
     truth = np.array([0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0])
     alarm = np.array([1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1], dtype=bool)
     result = evaluate(truth, alarm, times)

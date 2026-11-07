@@ -79,7 +79,7 @@ def test_uploads_do_not_collide_and_cadence_is_reported(tmp_path, monkeypatch):
     second = upload(frame).json()
     assert first["asset_id"] != second["asset_id"]
     assert "Sampling gaps reset temporal diagnostics" in first["domain_warnings"]
-    frame["datetime"] = pd.date_range("2026-01-01", periods=len(frame), freq="100ms")
+    frame["datetime"] = pd.date_range("2000-01-01", periods=len(frame), freq="100ms")
     assert upload(frame).status_code == 422
     no_time = upload(frame.drop(columns="datetime")).json()
     assert "Sampling cadence unavailable" in no_time["domain_warnings"]

@@ -20,7 +20,6 @@
     "FD004/test_FD004.txt",
     "FD004/RUL_FD004.txt"
   ],
-  "download_date": "2026-11-03",
   "note": "NASA directly links this PHM-hosted archive. Hash computed locally for integrity, not an independent NASA-published signature. Simulated data; no CC0 license inferred. FD002-FD004 extracted 3 Nov 2026 from the same archive for the generalisation benchmark (app/benchmark.py).",
   "subset_file_sha256": {
     "FD002/RUL_FD002.txt": "c851dd96a6ea6998d3c4a8f834d3c8013aa90e93a6ed950dc826ad0655b2906b",
